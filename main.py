@@ -17,8 +17,7 @@ st.title("Welcome to our retail store")
 # Load product images
 @st.cache_data
 def get_data():
-    csv_path = os.path.join(os.getcwd(), 'product_images.csv')
-    df = pd.read_csv(csv_path)
+    df = pd.read_csv('product_images.csv')
     data_array = df.to_numpy()  
     return data_array
 
