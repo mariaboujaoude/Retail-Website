@@ -17,13 +17,13 @@ st.title("Welcome to our retail store")
 # Load product images
 @st.cache_data
 def get_data():
-    df = pd.read_csv('product_images.csv')
+    df = pd.read_csv('./product_images.csv')
     data_array = df.to_numpy()  
     return data_array
 
 # Generate the different labels (clusters)
 @st.cache_data
-def get_labels():
+def get_labels(df):
     # Dimensionality reduction with PCA
     pca = PCA(n_components=9)
     pca_9 = pca.fit_transform(df)
@@ -46,7 +46,7 @@ def get_clusters():
     return cluster_dict
 
 data_array=get_data()
-yy_kmeans=get_labels()
+yy_kmeans=get_labels(data_array)
 cluster_dict=get_clusters()
 
 n_display=50
